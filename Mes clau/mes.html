@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 Month Anniversary</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f8d7ff, #d7f8ff);
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            clip-path: polygon(50% 0%, 100% 40%, 80% 100%, 50% 75%, 20% 100%, 0% 40%);
+            animation: fall 5s infinite linear;
+        }
+
+        .heart:nth-child(odd) {
+            animation-duration: 4s;
+        }
+
+        .heart:nth-child(even) {
+            animation-duration: 6s;
+        }
+
+        .envelope-container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            margin-top: 10%;
+        }
+
+        .envelope {
+            width: 150px;
+            height: 100px;
+            background: url('Cartaaa.jpeg') no-repeat center center;
+            background-size: contain;
+            position: relative;
+            cursor: pointer;
+            margin: 20px auto;
+        }
+
+        .message-prompt {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .photos {
+            display: none;
+            animation: fadeIn 1s ease;
+            text-align: center; /* Centrar contenido */
+        }
+
+        .photos img, .photos video {
+            max-width: 15%; /* Cambiado de 30% a 25% */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .text {
+            color: #333;
+            padding: 20px;
+            font-size: 1.2em;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin: 20px auto; /* Centrar texto */
+            display: none;
+            animation: fadeIn 1s ease;
+            text-align: center;
+            font-style: italic; /* Texto en cursiva */
+            max-width: 80%; /* Limitar ancho del texto */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .envelope.opened {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Falling hearts -->
+    <div id="hearts"></div>
+
+    <!-- Envelope Section -->
+    <div class="envelope-container">
+        <div class="envelope" onclick="openEnvelope()"></div>
+        <div class="message-prompt">Presiona la carta amor</div>
+    </div>
+
+    <!-- Photos Section -->
+    <div class="photos">
+        <img src="IMG-20241213-WA0026.jpg" alt="Photo 1">
+        <img src="Screenshot_20241218_230049_edit_388420837002869.jpg" alt="Photo 2">
+        <video src="VID-20241206-WA0045.mp4" controls></video>
+    </div>
+
+    <!-- Text Section -->
+    <div class="text" id="message">
+        Hola amor, un mes ya juntos y quiero dedicarte unas palabras con todo mi amor. Espero y lo leas completo, esto es uno de muchos detalles que te mereces.
+
+        Me he dado cuenta que quiero estar contigo por el resto de mi vida, que te amo demasiado.
+
+        No tienes idea de lo que has logrado cambiar en mí, no tenía idea que podría llegar a querer a alguien como te quiero a ti. La manera en la que te veo es única y me haces tener emociones que ni yo habría descubierto por sí solo.
+
+        Agradezco demasiado al universo que hayas llegado a mi vida y, sobre todo, que me aguantes tal y como soy. La verdad no quiero perderte, vivo con el miedo de que te enamores de alguien más porque sé que no soy perfecto y tú tienes todo lo que siempre quise.
+
+        Si empezamos esta historia, quiero que la terminemos juntos porque no puedo aceptar un final que no es contigo.
+
+        Quiero que sepas que te amo, que sin importar dónde y cómo estemos, te amo con todo mi ser. Eres mi lugar más lindo, eres mi lugar donde puedo ser yo. Te amo, no sé cuánto dure esto, pero quiero que dure mucho, quiero permanecer en tu vida, en tu mente, en tu corazón y en tu alma. Eres la única persona que me hace sentir en un lugar tranquilo.
+
+        Me diste la oportunidad de amarte, me diste el privilegio de ser tu pareja y formar parte de tu vida. Sé que somos jóvenes todavía, pero sé que quiero compartir mi vida contigo. Eres mi otra mitad y mi solecito que alumbra mis días. Te amo...
+    </div>
+
+    <script>
+        // Add falling hearts to the background
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        createHearts();
+
+        // Open the envelope
+        function openEnvelope() {
+            const envelope = document.querySelector('.envelope');
+            const photos = document.querySelector('.photos');
+            const message = document.getElementById('message');
+
+            envelope.classList.add('opened');
+            photos.style.display = 'block';
+            message.style.display = 'block';
+            envelope.parentElement.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+
